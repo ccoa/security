@@ -15,9 +15,9 @@ public interface UserService {
 	void deleteByUsername(String username) throws Exception;
 	
 	User findByUsername(String username) throws Exception;
-	
-	void updateStatusByUsername(String status, String username) throws Exception;
 
 	void updatePasswordByUsername(String password, String username) throws Exception;
+	
+	void activate(String username, boolean activate) throws Exception;
 
 }

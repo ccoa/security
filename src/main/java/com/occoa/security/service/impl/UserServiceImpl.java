@@ -47,15 +47,19 @@ public class UserServiceImpl implements UserService {
 		
 		return user;
 	}
-
-	@Override
-	public void updateStatusByUsername(String status, String username) throws Exception {
-		userDao.updateStatusByUsername(status, username);
-	}
 	
 	@Override
 	public void updatePasswordByUsername(String password, String username) throws Exception {
 		userDao.updatePasswordByUsername(password, username);
+	}
+
+	@Override
+	public void activate(String username, boolean activate) throws Exception {
+		if (activate) {
+			userDao.updateStatusByUsername(User.STATUS_ACTIVE, username);
+		} else {
+			userDao.updateStatusByUsername(User.STATUS_INACTIVE, username);
+		}		
 	}
 
 }
