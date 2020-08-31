@@ -3,6 +3,7 @@ package com.occoa.security.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,22 +23,14 @@ import com.occoa.security.service.UserService;
 
 @RequestMapping(value = "/users")
 @RestController
-@CrossOrigin
+@AllArgsConstructor
 public class UserController {
-	
-	@Autowired
-	private UserService userService;
+
+	private final UserService userService;
 
 	@GetMapping(value = "/")
-	public ResponseEntity<Object> list() {
-		List<User> users = new ArrayList<User>();
-		
-		try {
-			users = userService.findAll();
-		} catch (Exception e) {
-			return new ResponseEntity<Object>(e, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		return new ResponseEntity<Object>(users, HttpStatus.OK);
+	public Object list() {
+		return userService.findAll();
 	}
 	
 	@PostMapping(value = "/")
@@ -74,7 +67,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value = "/{username}/")
-	public ResponseEntity<Object> findById(@PathVariable("username") String username) {
+	public ResponseEntity<Object> findById(@PathVariable String username) {
 		User user = null;
 		
 		try {

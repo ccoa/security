@@ -3,6 +3,7 @@ package com.occoa.security.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,10 @@ import com.occoa.security.service.RoleService;
 
 @RestController
 @RequestMapping("/roles")
+@AllArgsConstructor
 public class RoleController {
-	
-	@Autowired
-	private RoleService roleService;
+
+	private final RoleService roleService;
 	
 	@GetMapping
 	public ResponseEntity<Object> listar() {

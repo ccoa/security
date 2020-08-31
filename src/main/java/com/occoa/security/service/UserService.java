@@ -6,7 +6,7 @@ import com.occoa.security.model.User;
 
 public interface UserService {
 	
-	List<User> findAll() throws Exception;
+	List<User> findAll();
 	
 	void update(User user) throws Exception;
 	

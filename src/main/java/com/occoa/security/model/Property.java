@@ -1,16 +1,14 @@
 package com.occoa.security.model;
 
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "tb_property")
+@Table("tb_property")
+@Data
 public class Property implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -18,17 +16,16 @@ public class Property implements Serializable {
 	public static final String STATUS_INACTIVE = "I";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "prop_id")
+	@Column("prop_id")
 	private Long id;
 	
-	@Column(name = "prop_descr")
+	@Column("prop_descr")
 	private String description;
 	
-	@Column(name = "prop_value")
+	@Column("prop_value")
 	private String value;
 	
-	@Column(name = "prop_statu")
+	@Column("prop_statu")
 	private String status;
 
 	public Long getId() {

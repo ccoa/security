@@ -1,16 +1,12 @@
 package com.occoa.security.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "tb_permission")
+@Table("tb_permission")
 public class Permission implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -18,49 +14,16 @@ public class Permission implements Serializable {
 	public static final String STATUS_INACTIVE = "I";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "perm_id")
+	@Column("perm_id")
 	private Long id;
 	
-	@Column(name = "perm_name")
+	@Column("perm_name")
 	private String name;
 	
-	@Column(name = "perm_code")
+	@Column("perm_code")
 	private String code;
 	
-	@Column(name = "perm_statu")
+	@Column("perm_statu")
 	private String status;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }

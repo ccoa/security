@@ -16,14 +16,13 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public List<User> findAll() throws Exception {
+	public List<User> findAll() {
 		return (List<User>) userDao.findAll();
 	}
 
 	@Override
 	public void update(User user) throws Exception {
 		userDao.update(
-				user.getEmail(),
 				user.getPhoneNumber(),
 				user.getType(),
 				user.getStatus(),
