@@ -20,16 +20,16 @@ public class Role implements Serializable {
 	@Column("role_id")
 	private Long id;
 
-	@Column("role_name")
+	@Column("name")
 	private String name;
 
-	@Column("role_descr")
+	@Column("description")
 	private String description;
 
-	@Column("role_regis")
+	@Column("register_date")
 	private Date registerDateTime;
 
-	@Column("role_statu")
+	@Column("status")
 	private String status;
 
 }

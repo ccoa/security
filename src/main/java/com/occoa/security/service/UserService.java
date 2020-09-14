@@ -1,23 +1,23 @@
 package com.occoa.security.service;
 
-import java.util.List;
-
 import com.occoa.security.model.User;
+
+import java.util.List;
 
 public interface UserService {
 	
 	List<User> findAll();
 	
-	void update(User user) throws Exception;
+	void update(User user);
 	
-	User register(User user) throws Exception;
+	User register(User user);
 	
-	void deleteByUsername(String username) throws Exception;
+	void deleteByUsername(String username);
 	
-	User findByUsername(String username) throws Exception;
+	User findByUsername(String username);
 
-	void updatePasswordByUsername(String password, String username) throws Exception;
+	void updatePasswordByUsername(String password, String username);
 	
-	void activate(String username, boolean activate) throws Exception;
+	void activate(String username, boolean activate);
 
 }

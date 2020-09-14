@@ -24,7 +24,7 @@ public class GlobalExceptionHandlerController {
     public ResponseEntity<Object> handleFieldValidationException(FieldValidationException e) {
         log.error("", e);
 
-        return Response.respond400(e.getMessage(), e.getErrors());
+        return Response.badRequest(e.getMessage(), e.getErrors());
     }
 
     @ExceptionHandler
@@ -32,7 +32,7 @@ public class GlobalExceptionHandlerController {
     public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException e) {
         log.error("", e);
 
-        return Response.respond500(e.getMessage());
+        return Response.internalServerError(e.getMessage());
     }
 
     @ExceptionHandler
@@ -48,7 +48,7 @@ public class GlobalExceptionHandlerController {
             errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
         }
 
-        return Response.respond400(e.getMessage(), errors);
+        return Response.badRequest(e.getMessage(), errors);
     }
 
     @ResponseBody
