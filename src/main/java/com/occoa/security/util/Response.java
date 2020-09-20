@@ -14,7 +14,9 @@ public class Response {
         errorResponse.setMessage(errorMessage);
         errorResponse.setError("Internal Server Error");
         errorResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(errorResponse);
     }
 
     public static ResponseEntity<Object> forbidden(String errorMessage) {
@@ -22,7 +24,9 @@ public class Response {
         errorResponse.setMessage(errorMessage);
         errorResponse.setError("Forbidden");
         errorResponse.setStatus(HttpStatus.FORBIDDEN.value());
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
+                .body(errorResponse);
     }
 
     public static ResponseEntity<Object> notFound() {
@@ -50,6 +54,14 @@ public class Response {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
+    public static ResponseEntity<Object> ok() {
+        return ResponseEntity.ok("");
+    }
+
+    public static ResponseEntity<Object> ok(Object object) {
+        return ok(object, "Ok");
+    }
+
     public static ResponseEntity<Object> ok(Object object, String message) {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse();
         apiSuccessResponse.setStatus(HttpStatus.OK.value());
@@ -58,12 +70,22 @@ public class Response {
         return ResponseEntity.ok(apiSuccessResponse);
     }
 
+    public static ResponseEntity<Object> created(Object object) {
+        return created(object, "Created");
+    }
+
     public static ResponseEntity<Object> created(Object object, String message) {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse();
         apiSuccessResponse.setStatus(HttpStatus.CREATED.value());
         apiSuccessResponse.setMessage(message);
         apiSuccessResponse.setData(object);
-        return ResponseEntity.ok(apiSuccessResponse);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(apiSuccessResponse);
+    }
+
+    public static ResponseEntity<Object> accepted(Object object) {
+        return accepted(object, "Accepted");
     }
 
     public static ResponseEntity<Object> accepted(Object object, String message) {
@@ -71,23 +93,22 @@ public class Response {
         apiSuccessResponse.setStatus(HttpStatus.ACCEPTED.value());
         apiSuccessResponse.setMessage(message);
         apiSuccessResponse.setData(object);
-        return ResponseEntity.ok(apiSuccessResponse);
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(apiSuccessResponse);
     }
 
-    public static ResponseEntity<Object> noContent(Object object, String message) {
+    public static ResponseEntity<Object> noContent() {
+        return noContent("No content");
+    }
+
+    public static ResponseEntity<Object> noContent(String message) {
         ApiSuccessResponse apiSuccessResponse = new ApiSuccessResponse();
         apiSuccessResponse.setStatus(HttpStatus.NO_CONTENT.value());
         apiSuccessResponse.setMessage(message);
-        apiSuccessResponse.setData(object);
-        return ResponseEntity.ok(apiSuccessResponse);
-    }
-
-    public static ResponseEntity<Object> ok(Object object) {
-        return ok(object, "Ok");
-    }
-
-    public static ResponseEntity<Object> ok() {
-        return ResponseEntity.ok("");
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(apiSuccessResponse);
     }
 
 }

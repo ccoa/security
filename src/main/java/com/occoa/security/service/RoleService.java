@@ -6,8 +6,8 @@ import com.occoa.security.model.Role;
 
 public interface RoleService {
 
-	List<Role> findAll() throws Exception;
+	List<Role> findAll();
 	
-	Role register(Role role) throws Exception;
+	Role register(Role role);
 	
 }

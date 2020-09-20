@@ -16,14 +16,12 @@ public class RoleServiceImpl implements RoleService {
 	private RoleDao roleDao;
 
 	@Override
-	public List<Role> findAll() throws Exception {
-		
+	public List<Role> findAll() {
 		return (List<Role>) roleDao.findAll();
 	}
 
 	@Override
-	public Role register(Role role) throws Exception {
-		
+	public Role register(Role role) {
 		return roleDao.save(role);
 	}
 

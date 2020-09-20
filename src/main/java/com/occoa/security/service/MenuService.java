@@ -6,8 +6,8 @@ import com.occoa.security.model.Menu;
 
 public interface MenuService {
 	
-	List<Menu> findAll() throws Exception;
+	List<Menu> findAll();
 	
-	Menu findById(Long id) throws Exception;
+	Menu findById(Long id);
 
 }
